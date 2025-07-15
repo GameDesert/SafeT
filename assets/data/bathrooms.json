@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Itsu",
+    "notes": "",
+    "location":"Westfield Stratford",
+    "lat": 51.541991,
+    "lng": -0.009323,
+    "locked": "Code",
+    "code":"C0458",
+    "type": "Single",
+    "radar": false,
+    "updated": "2025-07-12"
+  },
+  {
+    "name": "Pret A Manger",
+    "notes": "",
+    "location":"Tothill Street",
+    "lat": 51.49962,
+    "lng": -0.13252,
+    "locked": "Code",
+    "code":"1109",
+    "type": "Single",
+    "radar": false,
+    "updated": "2025-07-01"
+  },
+  {
+    "name": "Barbican Centre | Level -2",
+    "notes": "",
+    "location":"Silk Street",
+    "lat": 51.519768,
+    "lng": -0.093757,
+    "locked": "No",
+    "code":"",
+    "type": "Neutral",
+    "radar": false,
+    "updated": "2025-07-15"
+  }
+]

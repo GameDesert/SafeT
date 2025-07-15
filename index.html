@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>London Trans + GNC Resources | SafeT</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      section.hero {
+        background-color: var(--blue);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        gap: 0;
+      }
+
+      @media only screen and (max-width: 850px) {
+        div.sponsor {
+          display: none;
+        }
+      }
+
+      div.sponsor {
+        width: 160px;
+        font-family: "Atkinson Next", sans-serif;
+        background-color: var(--blue);
+        color: #fff;
+      }
+
+      div.sponsor p {
+        padding-left: 10px;
+        font-size: 12px;
+      }
+
+      div.sponsor a {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      div.sponsor img {
+        width: 160px;
+        height: 600px;
+      }
+
+      div.sponsor div.sponsor-tab {
+        background-color: var(--blue);
+        width: min-content;
+        padding: 5px;
+        position: absolute;
+        border-radius: 0 0 8px 0;
+        font-family: "Degheest", sans-serif;
+        font-weight: 100;
+      }
+
+      div.signpost {
+        min-width: max-content;
+        background-color: var(--blue);
+
+        height: 100%;
+        width: 100%;
+      }
+
+      div.signpost nav h1 {
+        color: #ffffff62;
+        font-family: "Degheest", sans-serif;
+        font-weight: 100;
+        font-size: 5em;
+        text-orientation: upright;
+        writing-mode: sideways-lr;
+        margin: 0;
+        padding: 0;
+
+        text-align: right;
+        padding-bottom: 24px;
+      }
+
+      div.signpost nav {
+        width: 100%;
+
+        display: block;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        align-content: center;
+        gap: 0px;
+
+        padding-right: 24px;
+
+        max-width: fit-content;
+
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      div.signpost nav ul {
+        margin: 0;
+        padding-top: 32px;
+        padding-left: 0;
+        padding-bottom: 32px;
+        list-style: none;
+        gap: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        align-content: flex-start;
+
+        width: max-content;
+      }
+
+      div.signpost nav ul li {
+        height: 105px;
+      }
+
+      div.signpost nav ul li:hover > a div.icon {
+        border-bottom-width: 0px !important;
+        transform: translateY(8px);
+      }
+
+      div.signpost nav ul li a {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 16px;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      div.signpost nav ul li a div.icon {
+        width: 100px;
+        height: 100px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        transition: 0.35s;
+      }
+
+      div.signpost nav ul li a div.icon svg {
+        width: 70px;
+        height: 70px;
+      }
+
+      div.signpost nav ul li a div.text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-content: flex-start;
+        gap: 2px;
+      }
+
+      div.signpost nav ul li a div.text h2 {
+        margin: 0;
+        font-size: 1.25em;
+        font-family: "Degheest", sans-serif;
+        font-weight: 600;
+      }
+
+      div.signpost nav ul li a div.text p {
+        margin: 0;
+        font-size: 0.95em;
+        width: 220px;
+        font-family: "Atkinson Next", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- #region ESCAPE BUTTON -->
+    <a
+      tabindex="1"
+      id="leave"
+      href="https://bbc.co.uk/weather"
+      target="_self"
+      title="Click here or press the escape key on your keyboard to leave this page quickly."
+    >
+      <p>Click<br />to leave<br />this page</p>
+      <svg
+        version="1.1"
+        viewBox="0 0 12.7 12.7"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m12.7 0-12.7 12.7h12.7z"
+          fill="#782121"
+          style="paint-order: stroke fill markers"
+        />
+      </svg>
+    </a>
+    <script>
+      document
+        .getElementById("leave")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+
+          document.body.innerHTML = "Loading...";
+          document.head.title = "Search";
+          // Clear cookies for the current site
+          document.cookie.split(";").forEach(function (c) {
+            document.cookie =
+              c.trim().split("=")[0] +
+              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          });
+          // Open BBC Weather in a new tab
+          window.open("https://bbc.co.uk/weather", "_blank");
+          // Change current tab to Google
+          location.replace("https://google.co.uk");
+        });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.body.innerHTML = "Loading...";
+          document.head.title = "Search";
+          // Clear cookies for the current site
+          document.cookie.split(";").forEach(function (c) {
+            document.cookie =
+              c.trim().split("=")[0] +
+              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          });
+          // Open BBC Weather in a new tab
+          window.open("https://bbc.co.uk/weather", "_blank");
+          // Change current tab to Google
+          location.replace("https://google.co.uk");
+        }
+      });
+    </script>
+    <!-- #endregion -->
+    <div class="safetybar">
+      <p>
+        To exit this page quickly, click the triangle in the bottom right or
+        press the <kbd>esc</kbd> key on your keyboard.
+        <a href="websafety"
+          >Click here for important information about browsing safely on shared
+          devices.</a
+        >
+      </p>
+    </div>
+
+    <header>
+      <a href="index.html">
+        <svg
+          version="1.1"
+          alt="SafeT Logo"
+          class="logo"
+          viewBox="0 0 512 215.52"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>SafeT</title>
+          <g transform="translate(-132.68 -153.48)">
+            <path
+              d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
+              stroke-linejoin="bevel"
+              stroke-width="7.291"
+            />
+          </g>
+        </svg>
+      </a>
+    </header>
+
+    <section class="hero">
+      <div class="sponsor">
+        <div class="sponsor-tab">AD</div>
+        <img src="https://placedog.net/160x600" alt="Advertisement" />
+        <p>
+          This website is maintained by sponsors. Please read our
+          <a href="advertise">sponsor information</a>.
+        </p>
+      </div>
+      <div class="signpost">
+        <nav>
+          <h1>WELCOME</h1>
+          <ul>
+            <li>
+              <a href="directory">
+                <div
+                  class="icon"
+                  style="
+                    background-color: #ecb3b8;
+                    border-bottom: solid 8px #bf6970;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #bf6970"
+                    viewBox="0 0 24 24"
+                  >
+                    <title>Directory</title>
+                    <path
+                      d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z"
+                    />
+                  </svg>
+                </div>
+                <div class="text">
+                  <h2>The Directory</h2>
+                  <p>
+                    Resources and information for trans and gender
+                    nonoconforming people.
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="directory">
+                <div
+                  class="icon"
+                  style="
+                    background-color: #99c8f2;
+                    border-bottom: solid 8px #5597d1;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #5597d1"
+                    viewBox="0 0 24 24"
+                  >
+                    <title>Parents and Guardians</title>
+                    <path
+                      d="M12,2A3,3 0 0,1 15,5A3,3 0 0,1 12,8A3,3 0 0,1 9,5A3,3 0 0,1 12,2M12,9C13.63,9 15.12,9.35 16.5,10.05C17.84,10.76 18.5,11.61 18.5,12.61V18.38C18.5,19.5 17.64,20.44 15.89,21.19V19C15.89,18.05 15.03,17.38 13.31,16.97C12.75,16.84 12.31,16.78 12,16.78C11.13,16.78 10.3,16.95 9.54,17.3C8.77,17.64 8.31,18.08 8.16,18.61C9.5,19.14 10.78,19.41 12,19.41L13,19.31V21.94L12,22C10.63,22 9.33,21.72 8.11,21.19C6.36,20.44 5.5,19.5 5.5,18.38V12.61C5.5,11.61 6.16,10.76 7.5,10.05C8.88,9.35 10.38,9 12,9M12,11A2,2 0 0,0 10,13A2,2 0 0,0 12,15A2,2 0 0,0 14,13A2,2 0 0,0 12,11Z"
+                    />
+                  </svg>
+                </div>
+                <div class="text">
+                  <h2>For Parents and Guardians</h2>
+                  <p>
+                    Advice on how to support children and teens in your care.
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="directory">
+                <div
+                  class="icon"
+                  style="
+                    background-color: #b6e7f2;
+                    border-bottom: solid 8px #5ebdd2;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #5ebdd2"
+                    viewBox="0 0 24 24"
+                  >
+                    <title>Allies</title>
+                    <path
+                      d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"
+                    />
+                  </svg>
+                </div>
+                <div class="text">
+                  <h2>For Allies</h2>
+                  <p>Advice on how to support friends and fellow citizens.</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="directory">
+                <div
+                  class="icon"
+                  style="
+                    background-color: #f2e9ec;
+                    border-bottom: solid 8px #dab4c0;
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="fill: #dab4c0"
+                    viewBox="0 0 24 24"
+                  >
+                    <title>Mythbuster</title>
+                    <path
+                      d="M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V17L6,13H16A1,1 0 0,0 17,12M21,6H19V15H6V17A1,1 0 0,0 7,18H18L22,22V7A1,1 0 0,0 21,6Z"
+                    />
+                  </svg>
+                </div>
+                <div class="text">
+                  <h2>Mythbuster</h2>
+                  <p>
+                    Discussing common misconceptions about people who identify
+                    as trans and gender nonconforming.
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sponsor">
+        <div class="sponsor-tab">AD</div>
+        <img src="https://placedog.net/160x600" alt="Advertisement" />
+        <p>
+          This website is maintained by sponsors. Please read our
+          <a href="advertise">sponsor information</a>.
+        </p>
+      </div>
+    </section>
+    <section class="block about">
+      <h2>About</h2>
+      <p>
+        SafeT (pronounced <em>safety</em>) is a free community project designed
+        to collate resources for people identifying as transgender and gender
+        nonconforming who live, work, and study in London.
+      </p>
+    </section>
+    <section class="block disclaimer">
+      <h2>Disclaimer</h2>
+      <p>
+        Resources on this site are collated from and reference various sources,
+        usually online, and thus are liable to being incorrect or outdated (most
+        resources will be marked with a date of publishing)&mdash;though we do
+        take reasonable precautions to ensure they are helpful and accurate.
+        Information on this site will, where possible, have a link to the
+        original source. No advice on this website shall constitute legal or
+        medical advice, and you must carry out your own research and make your
+        own informed decisions about anything you read here.<br /><br />SafeT
+        does not use AI to generate content or advice, as we are aware of the
+        risks present regarding hallucinated/misleading content.<br /><br />In
+        the interest of transparency, please note that this website and its
+        content is predominantly&mdash;but not exclusively&mdash;built and
+        written by a cisgender member of the LGBTQIA+ community.
+      </p>
+    </section>
+  </body>
+</html>

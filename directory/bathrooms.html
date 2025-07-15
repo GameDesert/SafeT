@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map of Inclusive Bathroom Facilities | SafeT</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    #map {
+      height: 70dvh;
+      width: 100%;
+      /* Full width of the viewport */
+      z-index: 1;
+    }
+
+    svg.mapicon {
+      width: 14px;
+      height: 14px;
+      transform: translateY(2px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- #region ESCAPE BUTTON -->
+  <a tabindex="1" id="leave" href="https://bbc.co.uk/weather" target="_self"
+    title="Click here or press the escape key on your keyboard to leave this page quickly.">
+    <p>Click<br />to leave<br />this page</p>
+    <svg version="1.1" viewBox="0 0 12.7 12.7" xmlns="http://www.w3.org/2000/svg">
+      <path d="m12.7 0-12.7 12.7h12.7z" fill="#782121" style="paint-order: stroke fill markers" />
+    </svg>
+  </a>
+  <script>
+    document
+      .getElementById("leave")
+      .addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        document.body.innerHTML = "Loading...";
+        document.head.title = "Search";
+        // Clear cookies for the current site
+        document.cookie.split(";").forEach(function (c) {
+          document.cookie =
+            c.trim().split("=")[0] +
+            "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        });
+        // Open BBC Weather in a new tab
+        window.open("https://bbc.co.uk/weather", "_blank");
+        // Change current tab to Google
+        location.replace("https://google.co.uk");
+      });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.body.innerHTML = "Loading...";
+        document.head.title = "Search";
+        // Clear cookies for the current site
+        document.cookie.split(";").forEach(function (c) {
+          document.cookie =
+            c.trim().split("=")[0] +
+            "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        });
+        // Open BBC Weather in a new tab
+        window.open("https://bbc.co.uk/weather", "_blank");
+        // Change current tab to Google
+        location.replace("https://google.co.uk");
+      }
+    });
+  </script>
+  <!-- #endregion -->
+  <div class="safetybar">
+    <p>
+      To exit this page quickly, click the triangle in the bottom right or
+      press the <kbd>esc</kbd> key on your keyboard.
+      <a href="/websafety">Click here for important information about browsing safely on shared
+        devices.</a>
+    </p>
+  </div>
+
+  <header>
+    <a href="/index.html">
+      <svg version="1.1" alt="SafeT Logo" class="logo" viewBox="0 0 512 215.52" xmlns="http://www.w3.org/2000/svg">
+        <title>SafeT</title>
+        <g transform="translate(-132.68 -153.48)">
+          <path
+            d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
+            stroke-linejoin="bevel" stroke-width="7.291" />
+        </g>
+      </svg>
+    </a>
+  </header>
+
+  <svg style="display: none;">
+    <symbol id="icon-key" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Radar Key</title>
+      <path
+        d="M7 14C5.9 14 5 13.1 5 12S5.9 10 7 10 9 10.9 9 12 8.1 14 7 14M12.6 10C11.8 7.7 9.6 6 7 6C3.7 6 1 8.7 1 12S3.7 18 7 18C9.6 18 11.8 16.3 12.6 14H16V18H20V14H23V10H12.6Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-notes" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Notes</title>
+      <path
+        d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-lock" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Locked</title>
+      <path
+        d="M12,17A2,2 0 0,0 14,15C14,13.89 13.1,13 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6A2,2 0 0,1 4,20V10C4,8.89 4.9,8 6,8H7V6A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,3A3,3 0 0,0 9,6V8H15V6A3,3 0 0,0 12,3Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-unlock" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Unlocked</title>
+      <path
+        d="M18,8A2,2 0 0,1 20,10V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V10A2,2 0 0,1 6,8H15V6A3,3 0 0,0 12,3A3,3 0 0,0 9,6H7A5,5 0 0,1 12,1A5,5 0 0,1 17,6V8H18M12,17A2,2 0 0,0 14,15A2,2 0 0,0 12,13A2,2 0 0,0 10,15A2,2 0 0,0 12,17Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-asterisk" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Gender Neutral</title>
+      <path
+        d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2M12 20C7.61 20 4 16.39 4 12C4 7.61 7.61 4 12 4C16.39 4 20 7.61 20 12C20 16.39 16.39 20 12 20M13 10.27L15.83 8.63L16.83 10.37L14 12L16.83 13.63L15.83 15.37L13 13.73V17H11V13.73L8.17 15.37L7.17 13.63L10 12L7.17 10.37L8.17 8.63L11 10.27V7H13V10.27Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-accessible" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Accessible</title>
+      <path
+        d="M8.5 4A2 2 0 0 1 6.5 6A2 2 0 0 1 4.5 4A2 2 0 0 1 6.5 2A2 2 0 0 1 8.5 4M5 7C3.89 7 3 7.89 3 9V15H5V22H8.61A7 7 0 0 1 6.5 17A7 7 0 0 1 10 10.95V9C10 7.89 9.11 7 8 7M13 8V16H18.5L21.2 19.6L22.8 18.4L19.5 14H15V8M12 12.23A5 5 0 0 0 8.5 17A5 5 0 0 0 13.5 22A5 5 0 0 0 18.5 17H16.5A3 3 0 0 1 13.5 20A3 3 0 0 1 10.5 17A3 3 0 0 1 12 14.41Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-single" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Single Occupancy</title>
+      <path
+        d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M7.07,18.28C7.5,17.38 10.12,16.5 12,16.5C13.88,16.5 16.5,17.38 16.93,18.28C15.57,19.36 13.86,20 12,20C10.14,20 8.43,19.36 7.07,18.28M18.36,16.83C16.93,15.09 13.46,14.5 12,14.5C10.54,14.5 7.07,15.09 5.64,16.83C4.62,15.5 4,13.82 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,13.82 19.38,15.5 18.36,16.83M12,6C10.06,6 8.5,7.56 8.5,9.5C8.5,11.44 10.06,13 12,13C13.94,13 15.5,11.44 15.5,9.5C15.5,7.56 13.94,6 12,6M12,11A1.5,1.5 0 0,1 10.5,9.5A1.5,1.5 0 0,1 12,8A1.5,1.5 0 0,1 13.5,9.5A1.5,1.5 0 0,1 12,11Z" />
+    </symbol>
+  </svg>
+
+  <svg style="display: none;">
+    <symbol id="icon-pin" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <title>Code</title>
+      <path
+        d="M7,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2M7,4V8H17V4H7M7,10V12H9V10H7M11,10V12H13V10H11M15,10V12H17V10H15M7,14V16H9V14H7M11,14V16H13V14H11M15,14V16H17V14H15M7,18V20H9V18H7M11,18V20H13V18H11M15,18V20H17V18H15Z" />
+    </symbol>
+  </svg>
+
+  <h1 class="main">Bathrooms</h1>
+
+  <div id="map"></div>
+
+  <script>
+    var currentIcon = L.icon({
+    iconUrl: '/assets/map-current-location.png',
+
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [15, -3] // point from which the popup should open relative to the iconAnchor
+});
+
+var facilityIcon = L.icon({
+    iconUrl: '/assets/toilet-marker.png',
+
+    iconSize:     [48, 48], // size of the icon
+    iconAnchor:   [24, 24], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -24] // point from which the popup should open relative to the iconAnchor
+});
+
+var radarIcon = L.icon({
+    iconUrl: '/assets/radar-toilet-marker.png',
+
+    iconSize:     [48, 48], // size of the icon
+    iconAnchor:   [24, 24], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -24] // point from which the popup should open relative to the iconAnchor
+});
+    
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: 'Map tiles by Carto, under CC BY 3.0. Data by <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, under ODbL'
+    }).addTo(map);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+
+          // Center map and add a marker
+          map.setView([lat, lng], 13);
+          L.marker([lat, lng], {icon: currentIcon}).addTo(map);
+        },
+        error => {
+          console.log("Geolocation failed: " + error.message);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by your browser.");
+    }
+
+    fetch('/assets/data/bathrooms.json')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(location => {
+          const marker = L.marker([location.lat, location.lng], {icon: (location.radar ? radarIcon : facilityIcon)}).addTo(map);
+          
+          marker.bindPopup(`
+          <b>${location.name}</b>
+          ${location.location ? `<br><span style='font-size: 11px;'>${location.location}</span><br>` : ""}
+          ${location.type == "Single" ? "<br><svg class='mapicon'><use href='#icon-single'/></svg> Single Occupancy (Fully Enclosed)" :
+              location.type == "Accessible" ? "<br><svg class='mapicon'><use href='#icon-accessible'/></svg> Accessible (Fully Enclosed)" :
+                location.type == "Neutral" ? "<br><svg class='mapicon'><use href='#icon-asterisk'/></svg> Gender Neutral (Shared Sink)" :
+                  ""
+            }
+          ${location.locked == "No" ? "<br><svg class='mapicon'><use href='#icon-unlock'/></svg> No Lock" :
+              location.locked == "Code" ? "<br><svg class='mapicon'><use href='#icon-lock'/></svg> Code Needed" :
+                location.locked == "Radar" ? "<br><svg class='mapicon'><use href='#icon-lock'/></svg> Radar Lock" :
+                  location.locked == "Employee" ? "<br><svg class='mapicon'><use href='#icon-lock'/></svg> Unlocked by Employee" :
+                    ""
+            }
+          ${location.code ? `<br><svg class='mapicon'><use href='#icon-pin'/></svg> Code: <b style='font-family: monospace;'>${location.code}</b>` : ""}
+          ${location.radar ? '<br><svg class="mapicon"><use href="#icon-key"/></svg> Radar Key Needed' : ""}
+          ${location.notes ? `<br><svg class="mapicon"><use href="#icon-notes" /></svg> ${location.notes}` : ""}
+          <br>
+          <br>
+          <span style='font-size: 10px'>Updated ${location.updated}</span>
+          `);
+        });
+      })
+      .catch(error => console.error('Error loading JSON:', error));
+
+    // [
+    //   {
+    //     "name": "Itsu",
+    //     "notes": "",
+    //     "lat": 48.8584,
+    //     "lng": 2.2945,
+    //     "locked": "Code|No|Radar|Employee (Ask One)",
+    //     "code":"C0458",
+    //     "type": "Single",
+    //     "radar": false,
+    //     "updated": "2025-07-12"
+    //   }
+    // ]
+  </script>
+  <section class="block">
+    <p>Click or tap on a marker to see details for that bathroom.</p>
+    <p>This map may ask for permission to access your location. This information does not leave your device and is not shared with anybody.<br><br>
+    If you press <kbd>allow</kbd>, your present approximate location will be indicated with the <img src="/assets/map-current-location.png" alt="Blue Circle Marker" style="display: inline; width: 20px; height: auto; transform: translateY(4px);"> symbol.</p>
+  </section>
+  <section class="block">
+    <h2>Types</h2>
+    <p>This map displays locations of bathrooms known to be accessible and inclusive for all gender identities.
+      <br>
+      <br>
+      Facilities here are divided into three categories:
+      <ul>
+        <li><svg class='mapicon'><use href='#icon-accessible'/></svg> <b>Accessible</b>
+        <br>
+        <span style="font-size: 13px;">A fully enclosed bathroom with signs indicating it is intended for use by people with disabilities.</span>
+      </li>
+        <li><svg class='mapicon'><use href='#icon-single'/></svg> <b>Single Occupancy</b>
+        <br>
+        <span style="font-size: 13px;">A fully enclosed bathroom that is intended for use by anybody.</span>
+      </li>
+        <li><svg class='mapicon'><use href='#icon-asterisk'/></svg> <b>Gender Neutral</b>
+        <br>
+        <span style="font-size: 13px;">Enclosed toilet cubicles with a shared any-gender handwashing area.</span>
+      </li>
+      </ul>
+    </p>
+  </section>
+  <svg style="width: 100dvw; height: 33dvw; border-top: solid 0.6dvw #2274a5; border-bottom: solid 0.6dvw #2274a5;" version="1.1" viewBox="0 0 812.8 270.93" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m226.61 0v270.93h4.2323v-270.93h-4.2323zm230.99 0v270.93h4.2323v-270.93h-4.2323zm-408.79 59.139v211.79h5.2968v-206.5h118.25v206.5h5.2968v-211.79h-128.84zm230.99 0v211.79h5.2968v-206.5h118.25v206.5h5.2968v-211.79h-128.84zm230.99 0v211.79h5.2968v-206.5h90.728v206.5h5.2974v-211.79h-101.32zm109.78 0v211.79h5.2968v-206.5h90.729v206.5h5.2968v-211.79h-101.32zm-512.74 32.947c-2.6938 0-4.8534 2.1839-4.8534 4.8534v0.2434l2.6696 26.453h13.105l7.7659 10.363 6.674-3.3249-2.1844-4.3444-3.0334 1.5048-6.7954-9.0522h-11.139l-0.48575-4.854h7.9845v-4.8534h-8.494l-0.72813-7.2807c2.4511-0.29168 4.3687-2.33 4.3687-4.854 0-2.6695-2.1602-4.8534-4.854-4.8534zm243.23 0.24546c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4972-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm217.23 0c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4971-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm109.78 0c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4971-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm-327.01 4.5615h9.124v18.248h-9.124v-18.248zm217.23 0h9.124v18.248h-9.124v-18.248zm109.78 0h9.124v18.248h-9.124v-18.248zm-324.73 2.2815v6.843h4.562v-6.843h-4.562zm217.23 0v6.843h4.562v-6.843h-4.562zm109.78 0v6.843h4.562v-6.843h-4.562zm-578.47 11.234c-5.0721 2.3055-8.615 7.3288-8.615 13.226 0 8.0328 6.528 14.561 14.561 14.561 5.606 0 10.484-3.2035 12.911-7.8631l-3.2034-4.2711h-0.33951c-1.0921 4.1742-4.854 7.2802-9.3679 7.2802-5.3633 0-9.7074-4.3441-9.7074-9.7074 0-3.3248 1.7234-6.2124 4.2716-7.9597l-0.51005-5.2664zm227.03 9.2945h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm217.23 0h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm109.78 0h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm118.95 28.731c-1.2396 0.03055-2.3182 1.0414-2.3182 2.3895 0 1.021 0.66406 1.9405 1.634 2.2464l13.681 4.5687v5.1051h12.763v-5.1051l-24.887-9.0615c-0.29194-0.1053-0.58676-0.1502-0.87282-0.14315zm12.997 16.863v2.5523h-17.357c-3.0631 0-5.6157 2.2973-5.6157 5.1051l22.973 2.3229v18.098h-38.392v77.559h63.318v-77.559h-12.163v-28.078h-12.763zm-22.973 10.21v5.1051h7.6574v-4.3904l-7.6574-0.71468zm-601.1 9.11a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.986v4.2323h21.625a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3786-4.3785 4.3789 4.3789 0 0 0-4.3786-4.3791zm230.99 0a4.3789 4.3789 0 0 0-0.00724 5.1e-4h-25.985v4.2323h21.624a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3786 4.3785 4.3789 4.3789 0 0 0 4.3791-4.3785 4.3789 4.3789 0 0 0-4.3791-4.3791zm203.47 0a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.984v4.2323h21.623a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3786-4.3785 4.3789 4.3789 0 0 0-4.3786-4.3791zm109.78 0a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.984v4.2323h21.623a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3791-4.3785 4.3789 4.3789 0 0 0-4.3791-4.3791z" color="#000000" fill="#2274a5"/></svg>
+  <section class="block">
+    <h2>Locks</h2>
+    <p>Access to some bathrooms may be limited, either to paying customers or to those holding a Radar key.</p>
+    <a href="" class="cta">Read our guide on Radar keys</a>
+    <p>Bathrooms accessible without a Radar key are indicated by the <img src="/assets/toilet-marker.png" alt="Orange Toilet Marker" style="display: inline; width: 24px; height: auto; transform: translateY(8px);"> marker, whilst those that require the key are indicated by the <img src="/assets/radar-toilet-marker.png" alt="Blue Toilet Marker" style="display: inline; width: 24px; height: auto; transform: translateY(8px);"> marker.</p>
+    <p>Some bathrooms may require a code to unlock, the map notes for a bathroom will indicate what the code was at the time of the last update, but this may be subject to change based on the establishment.<br><br>Occasionally, some bathrooms require an employee or member of staff to unlock them.</p>
+  </section>
+</body>
+
+</html>
