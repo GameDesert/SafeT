@@ -283,3 +283,29 @@ kbd.key {
   padding: 2px 3px;
   border-radius: 3px;
 }
+
+cite {
+  background-color: rgb(194, 194, 194);
+  padding: 2px 4px;
+  font-family: 'Atkinson Next', sans-serif;
+  font-style: italic;
+  font-size: 0.8em;
+
+  color: white;
+}
+
+cite a {
+  text-decoration-style: dotted;
+  border-bottom: 0px solid white;
+  color: white;
+
+  transition: 0.25s;
+
+  box-sizing: content-box;
+}
+
+cite a:hover {
+  text-decoration-color: rgb(194, 194, 194);
+  color: white;
+  border-bottom: 4px solid white;
+}
