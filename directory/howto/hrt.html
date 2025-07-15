@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRT | SafeT</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <!-- #region ESCAPE BUTTON -->
+    <a
+      tabindex="1"
+      id="leave"
+      href="https://bbc.co.uk/weather"
+      target="_self"
+      title="Click here or press the escape key on your keyboard to leave this page quickly."
+    >
+      <p>Click<br />to leave<br />this page</p>
+      <svg
+        version="1.1"
+        viewBox="0 0 12.7 12.7"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m12.7 0-12.7 12.7h12.7z"
+          fill="#782121"
+          style="paint-order: stroke fill markers"
+        />
+      </svg>
+    </a>
+    <script>
+      document
+        .getElementById("leave")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default link behavior
+
+          document.body.innerHTML = "Loading...";
+          document.head.title = "Search";
+          // Clear cookies for the current site
+          document.cookie.split(";").forEach(function (c) {
+            document.cookie =
+              c.trim().split("=")[0] +
+              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          });
+          // Open BBC Weather in a new tab
+          window.open("https://bbc.co.uk/weather", "_blank");
+          // Change current tab to Google
+          location.replace("https://google.co.uk");
+        });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.body.innerHTML = "Loading...";
+          document.head.title = "Search";
+          // Clear cookies for the current site
+          document.cookie.split(";").forEach(function (c) {
+            document.cookie =
+              c.trim().split("=")[0] +
+              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          });
+          // Open BBC Weather in a new tab
+          window.open("https://bbc.co.uk/weather", "_blank");
+          // Change current tab to Google
+          location.replace("https://google.co.uk");
+        }
+      });
+    </script>
+    <!-- #endregion -->
+    <div class="safetybar">
+      <p>
+        To exit this page quickly, click the triangle in the bottom right or
+        press the <kbd>esc</kbd> key on your keyboard.
+        <a href="/directory/howto/websafety"
+          >Click here for important information about browsing safely on shared
+          devices.</a
+        >
+      </p>
+    </div>
+
+    <header>
+      <a href="/index.html">
+        <svg
+          version="1.1"
+          alt="SafeT Logo"
+          class="logo"
+          viewBox="0 0 512 215.52"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>SafeT</title>
+          <g transform="translate(-132.68 -153.48)">
+            <path
+              d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
+              stroke-linejoin="bevel"
+              stroke-width="7.291"
+            />
+          </g>
+        </svg>
+      </a>
+    </header>
+
+    <ul class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li>
+        <a href="/directory"
+          ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>Directory</title>
+            <path
+              d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z"
+            />
+          </svg>
+          Directory</a
+        >
+      </li>
+      <li>
+        <a href="/directory/howto"
+          ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>How-To</title>
+            <path
+              d="M12 21.5C10.65 20.65 8.2 20 6.5 20C4.85 20 3.15 20.3 1.75 21.05C1.65 21.1 1.6 21.1 1.5 21.1C1.25 21.1 1 20.85 1 20.6V6C1.6 5.55 2.25 5.25 3 5C4.11 4.65 5.33 4.5 6.5 4.5C8.45 4.5 10.55 4.9 12 6C13.45 4.9 15.55 4.5 17.5 4.5C18.67 4.5 19.89 4.65 21 5C21.75 5.25 22.4 5.55 23 6V20.6C23 20.85 22.75 21.1 22.5 21.1C22.4 21.1 22.35 21.1 22.25 21.05C20.85 20.3 19.15 20 17.5 20C15.8 20 13.35 20.65 12 21.5M12 8V19.5C13.35 18.65 15.8 18 17.5 18C18.7 18 19.9 18.15 21 18.5V7C19.9 6.65 18.7 6.5 17.5 6.5C15.8 6.5 13.35 7.15 12 8M13 11.5C14.11 10.82 15.6 10.5 17.5 10.5C18.41 10.5 19.26 10.59 20 10.78V9.23C19.13 9.08 18.29 9 17.5 9C15.73 9 14.23 9.28 13 9.84V11.5M17.5 11.67C15.79 11.67 14.29 11.93 13 12.46V14.15C14.11 13.5 15.6 13.16 17.5 13.16C18.54 13.16 19.38 13.24 20 13.4V11.9C19.13 11.74 18.29 11.67 17.5 11.67M20 14.57C19.13 14.41 18.29 14.33 17.5 14.33C15.67 14.33 14.17 14.6 13 15.13V16.82C14.11 16.16 15.6 15.83 17.5 15.83C18.54 15.83 19.38 15.91 20 16.07V14.57Z"
+            />
+          </svg>
+          How-To</a
+        >
+      </li>
+      <li><a href="#">HRT</a></li>
+    </ul>
+
+    <section class="articleheader">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <title>HRT</title>
+        <path
+          d="M4.22,11.29L11.29,4.22C13.64,1.88 17.43,1.88 19.78,4.22C22.12,6.56 22.12,10.36 19.78,12.71L12.71,19.78C10.36,22.12 6.56,22.12 4.22,19.78C1.88,17.43 1.88,13.64 4.22,11.29M5.64,12.71C4.59,13.75 4.24,15.24 4.6,16.57L10.59,10.59L14.83,14.83L18.36,11.29C19.93,9.73 19.93,7.2 18.36,5.64C16.8,4.07 14.27,4.07 12.71,5.64L5.64,12.71Z"
+        />
+      </svg>
+      <h1>HRT</h1>
+      <style>
+        :root {
+          --article-head-primary: #d0c600;
+        }
+      </style>
+    </section>
+    <section class="block">
+      <div class="callout red">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>Warning</title>
+          <path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z" />
+        </svg>
+        <p>
+          This is not medical advice. It is not written by a medical
+          professional. You must fully research any pertinent information and
+          speak to a licensed medical professional before taking any medical
+          decisions, undergoing a procedure, or taking a new medication.
+        </p>
+      </div>
+      <div class="callout">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>Information</title>
+          <path
+            d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+          />
+        </svg>
+        <p>
+          This resource is written for those aged 18 and above, who have the
+          legal capacity to make fully independent decisions about their
+          health.<br /><br />
+          Advice for those below the age of 18 can be found on the "Advice for
+          Parents and Guardians" section of this site, though we do still
+          recommend reading this guide as there are relevant details.
+        </p>
+        <a href="/parents-guardians" class="cta"
+          >Advice for Parents and Guardians</a
+        >
+      </div>
+      <h2>Get a Prescription</h2>
+      <p>
+        To get a prescription, you need to get a diagnosis of gender dysphoria
+        or a related condition.
+      </p>
+      <a href="/directory/howto/getdiagnosed.html" class="cta"
+        >Read our guide on getting diagnosed</a
+      >
+      <p>
+        Once you have a diagnosis, your healthcare provider (either public or
+        private) should issue you a prescription that you can fill at your local
+        pharmacy; it's best to call ahead as they may not have the medication
+        on-hand.
+      </p>
+    </section>
+    <section class="block">
+      <h2>Take Your Prescription</h2>
+      <p>
+        The instructions on how to administer your prescription will be given to
+        you by your healthcare provider, and should also be listed on the
+        prescription. <br /><br />
+        If your prescription is on the NHS, your GP or other NHS care provider
+        will ask you to come in for liver function tests. If your prescription
+        is private, you can approach your GP to discuss organising these tests,
+        but they may refuse to help you.<br /><br />
+        
+        In this case, the Chelsea and Westminster Hospital NHS Foundation Trust operates a
+        sexual health clinic&mdash;56 Dean Street&mdash;which also offers
+        services specific to trans and non-binary people. This includes liver
+        function tests and hormone injections (once prescribed by a UK
+        registered medical doctor). Appointments must be booked online or over
+        the phone.
+        <cite
+          >Src: <a href="https://www.dean.st/trans-non-binary-2/">NHS</a></cite
+        >
+      </p>
+      <a
+        href="https://www.dean.st/trans-non-binary-2/"
+        class="cta"
+        target="_blank"
+        >56 Dean Street</a
+      >
+    </section>
+  </body>
+</html>
