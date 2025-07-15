@@ -160,6 +160,24 @@ a.cta::after {
   font-weight: 400;
 }
 
+a.cta.file {
+  background-color: #20d66c;
+  color: #fff;
+  border-bottom: solid 8px #0ab451;
+}
+
+a.cta.file:hover {
+  border-width: 0px;
+  transform: translateY(8px);
+  margin-bottom: 20px;
+  background-color: #0ab451;
+}
+
+a.cta.file::after {
+  content: " \2B73";
+  font-weight: 400;
+}
+
 h3, h4, h5, h6 {
   font-family: "Degheest", sans-serif;
   font-weight: 600;
@@ -309,3 +327,31 @@ cite a:hover {
   color: white;
   border-bottom: 4px solid white;
 }
+
+/* #region CALLOUTS */
+div.callout {
+  background-color: color-mix(in srgb, var(--yellow) 40%, #fff 60%);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+div.callout svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--yellow);
+  vertical-align: middle;
+}
+
+div.callout p {
+  color: black;
+}
+
+div.callout.red {
+  background-color: color-mix(in srgb, var(--red) 40%, #fff 60%);
+}
+
+div.callout.red svg {
+  fill: var(--red);
+}
+/* #endregion */

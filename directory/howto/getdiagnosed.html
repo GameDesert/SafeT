@@ -1,118 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How to Get a Diagnosis | SafeT</title>
     <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- #region ESCAPE BUTTON -->
-    <a
-      tabindex="1"
-      id="leave"
-      href="https://bbc.co.uk/weather"
-      target="_self"
-      title="Click here or press the escape key on your keyboard to leave this page quickly."
-    >
-      <p>Click<br />to leave<br />this page</p>
-      <svg
-        version="1.1"
-        viewBox="0 0 12.7 12.7"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="m12.7 0-12.7 12.7h12.7z"
-          fill="#782121"
-          style="paint-order: stroke fill markers"
-        />
-      </svg>
+    <a tabindex="1" id="leave" href="https://bbc.co.uk/weather" target="_self"
+        title="Click here or press the escape key on your keyboard to leave this page quickly.">
+        <p>Click<br />to leave<br />this page</p>
+        <svg version="1.1" viewBox="0 0 12.7 12.7" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.7 0-12.7 12.7h12.7z" fill="#782121" style="paint-order: stroke fill markers" />
+        </svg>
     </a>
     <script>
-      document
-        .getElementById("leave")
-        .addEventListener("click", function (event) {
-          event.preventDefault(); // Prevent the default link behavior
+        document
+            .getElementById("leave")
+            .addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent the default link behavior
 
-          document.body.innerHTML = "Loading...";
-          document.head.title = "Search";
-          // Clear cookies for the current site
-          document.cookie.split(";").forEach(function (c) {
-            document.cookie =
-              c.trim().split("=")[0] +
-              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          });
-          // Open BBC Weather in a new tab
-          window.open("https://bbc.co.uk/weather", "_blank");
-          // Change current tab to Google
-          location.replace("https://google.co.uk");
+                document.body.innerHTML = "Loading...";
+                document.head.title = "Search";
+                // Clear cookies for the current site
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie =
+                        c.trim().split("=")[0] +
+                        "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                });
+                // Open BBC Weather in a new tab
+                window.open("https://bbc.co.uk/weather", "_blank");
+                // Change current tab to Google
+                location.replace("https://google.co.uk");
+            });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                document.body.innerHTML = "Loading...";
+                document.head.title = "Search";
+                // Clear cookies for the current site
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie =
+                        c.trim().split("=")[0] +
+                        "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                });
+                // Open BBC Weather in a new tab
+                window.open("https://bbc.co.uk/weather", "_blank");
+                // Change current tab to Google
+                location.replace("https://google.co.uk");
+            }
         });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          document.body.innerHTML = "Loading...";
-          document.head.title = "Search";
-          // Clear cookies for the current site
-          document.cookie.split(";").forEach(function (c) {
-            document.cookie =
-              c.trim().split("=")[0] +
-              "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          });
-          // Open BBC Weather in a new tab
-          window.open("https://bbc.co.uk/weather", "_blank");
-          // Change current tab to Google
-          location.replace("https://google.co.uk");
-        }
-      });
     </script>
     <!-- #endregion -->
     <div class="safetybar">
-      <p>
-        To exit this page quickly, click the triangle in the bottom right or
-        press the <kbd>esc</kbd> key on your keyboard.
-        <a href="/directory/howto/websafety"
-          >Click here for important information about browsing safely on shared
-          devices.</a
-        >
-      </p>
+        <p>
+            To exit this page quickly, click the triangle in the bottom right or
+            press the <kbd>esc</kbd> key on your keyboard.
+            <a href="/directory/howto/websafety">Click here for important information about browsing safely on shared
+                devices.</a>
+        </p>
     </div>
 
     <header>
-      <a href="/index.html">
-        <svg
-          version="1.1"
-          alt="SafeT Logo"
-          class="logo"
-          viewBox="0 0 512 215.52"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>SafeT</title>
-          <g transform="translate(-132.68 -153.48)">
-            <path
-              d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
-              stroke-linejoin="bevel"
-              stroke-width="7.291"
-            />
-          </g>
-        </svg>
-      </a>
+        <a href="/index.html">
+            <svg version="1.1" alt="SafeT Logo" class="logo" viewBox="0 0 512 215.52"
+                xmlns="http://www.w3.org/2000/svg">
+                <title>SafeT</title>
+                <g transform="translate(-132.68 -153.48)">
+                    <path
+                        d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
+                        stroke-linejoin="bevel" stroke-width="7.291" />
+                </g>
+            </svg>
+        </a>
     </header>
 
     <ul class="breadcrumb">
-      <li><a href="/">Home</a></li>
-      <li><a href="/directory"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Directory</title><path d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z" /></svg> Directory</a></li>
-      <li><a href="/directory/howto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>How-To</title><path d="M12 21.5C10.65 20.65 8.2 20 6.5 20C4.85 20 3.15 20.3 1.75 21.05C1.65 21.1 1.6 21.1 1.5 21.1C1.25 21.1 1 20.85 1 20.6V6C1.6 5.55 2.25 5.25 3 5C4.11 4.65 5.33 4.5 6.5 4.5C8.45 4.5 10.55 4.9 12 6C13.45 4.9 15.55 4.5 17.5 4.5C18.67 4.5 19.89 4.65 21 5C21.75 5.25 22.4 5.55 23 6V20.6C23 20.85 22.75 21.1 22.5 21.1C22.4 21.1 22.35 21.1 22.25 21.05C20.85 20.3 19.15 20 17.5 20C15.8 20 13.35 20.65 12 21.5M12 8V19.5C13.35 18.65 15.8 18 17.5 18C18.7 18 19.9 18.15 21 18.5V7C19.9 6.65 18.7 6.5 17.5 6.5C15.8 6.5 13.35 7.15 12 8M13 11.5C14.11 10.82 15.6 10.5 17.5 10.5C18.41 10.5 19.26 10.59 20 10.78V9.23C19.13 9.08 18.29 9 17.5 9C15.73 9 14.23 9.28 13 9.84V11.5M17.5 11.67C15.79 11.67 14.29 11.93 13 12.46V14.15C14.11 13.5 15.6 13.16 17.5 13.16C18.54 13.16 19.38 13.24 20 13.4V11.9C19.13 11.74 18.29 11.67 17.5 11.67M20 14.57C19.13 14.41 18.29 14.33 17.5 14.33C15.67 14.33 14.17 14.6 13 15.13V16.82C14.11 16.16 15.6 15.83 17.5 15.83C18.54 15.83 19.38 15.91 20 16.07V14.57Z" /></svg> How-To</a></li>
-      <li><a href="#">Template</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/directory"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>Directory</title>
+                    <path
+                        d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z" />
+                </svg> Directory</a></li>
+        <li><a href="/directory/howto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>How-To</title>
+                    <path
+                        d="M12 21.5C10.65 20.65 8.2 20 6.5 20C4.85 20 3.15 20.3 1.75 21.05C1.65 21.1 1.6 21.1 1.5 21.1C1.25 21.1 1 20.85 1 20.6V6C1.6 5.55 2.25 5.25 3 5C4.11 4.65 5.33 4.5 6.5 4.5C8.45 4.5 10.55 4.9 12 6C13.45 4.9 15.55 4.5 17.5 4.5C18.67 4.5 19.89 4.65 21 5C21.75 5.25 22.4 5.55 23 6V20.6C23 20.85 22.75 21.1 22.5 21.1C22.4 21.1 22.35 21.1 22.25 21.05C20.85 20.3 19.15 20 17.5 20C15.8 20 13.35 20.65 12 21.5M12 8V19.5C13.35 18.65 15.8 18 17.5 18C18.7 18 19.9 18.15 21 18.5V7C19.9 6.65 18.7 6.5 17.5 6.5C15.8 6.5 13.35 7.15 12 8M13 11.5C14.11 10.82 15.6 10.5 17.5 10.5C18.41 10.5 19.26 10.59 20 10.78V9.23C19.13 9.08 18.29 9 17.5 9C15.73 9 14.23 9.28 13 9.84V11.5M17.5 11.67C15.79 11.67 14.29 11.93 13 12.46V14.15C14.11 13.5 15.6 13.16 17.5 13.16C18.54 13.16 19.38 13.24 20 13.4V11.9C19.13 11.74 18.29 11.67 17.5 11.67M20 14.57C19.13 14.41 18.29 14.33 17.5 14.33C15.67 14.33 14.17 14.6 13 15.13V16.82C14.11 16.16 15.6 15.83 17.5 15.83C18.54 15.83 19.38 15.91 20 16.07V14.57Z" />
+                </svg> How-To</a></li>
+        <li><a href="#">Get Diagnosed</a></li>
     </ul>
 
     <section class="articleheader">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Template</title><path d="M2,3H22V13H18V21H16V13H8V21H6V13H2V3M18.97,11L20,9.97V7.15L16.15,11H18.97M13.32,11L19.32,5H16.5L10.5,11H13.32M7.66,11L13.66,5H10.83L4.83,11H7.66M5.18,5L4,6.18V9L8,5H5.18Z" /></svg>
-      <h1>Template</h1>
-      <style>
-      :root {
-        --article-head-primary: #cfd600;
-      }
-    </style>
+        <svg xmlns="http://www.w3.org/2000/svg" style="fill: #30d000;" viewBox="0 0 24 24">
+            <title>Diagnosis</title>
+            <path
+                d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H9.18C9.6,1.84 10.7,1 12,1C13.3,1 14.4,1.84 14.82,3H19M12,3A1,1 0 0,0 11,4A1,1 0 0,0 12,5A1,1 0 0,0 13,4A1,1 0 0,0 12,3M7,7V5H5V19H19V5H17V7H7M12,9A2,2 0 0,1 14,11A2,2 0 0,1 12,13A2,2 0 0,1 10,11A2,2 0 0,1 12,9M8,17V16C8,14.9 9.79,14 12,14C14.21,14 16,14.9 16,16V17H8Z" />
+        </svg>
+        <h1>Get Diagnosed</h1>
+        <style>
+            :root {
+                --article-head-primary: #30d000;
+            }
+        </style>
     </section>
-  </body>
+    <section class="block">
+        <div class="callout red">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>Warning</title>
+                <path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z" />
+            </svg>
+            <p>This is not medical advice. It is not written by a medical professional. You must fully research any
+                pertinent information and speak to a licensed medical professional before taking any medical decisions,
+                undergoing a procedure, or taking a new medication.</p>
+        </div>
+        <div class="callout">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>Information</title>
+                <path
+                    d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+            <p>This resource is written for those aged 18 and above, who have the legal capacity to make fully
+                independent decisions about their health.<br><br>
+                Advice for those below the age of 18 can be found on the "Advice for Parents and Guardians" section of
+                this site, though we do still recommend reading this guide as there are relevant details.</p>
+            <a href="/parents-guardians" class="cta">Advice for Parents and Guardians</a>
+        </div>
+        <h2>Purpose</h2>
+        <p>To safely and legally undertake most gender-related surgeries, as well as get a prescription for HRT, you
+            will need a formal diagnosis from a medical professional.
+            <br><br>
+            This diagnosis will tend to be for gender dysphoria, but it may be for one of several similar conditions.
+            <br><br>
+            Please note, being trans or gender nonconforming is not a mental illness or disorder, and you do not need a
+            diagnosis of any sort for your identity to be valid. A diagnosis is often required for access to medical
+            care and support.
+        </p>
+    </section>
+    <section class="block">
+        <h2>Diagnostic Routes</h2>
+        <h3>NHS</h3>
+        <b>Cheaper but slower.</b>
+        <p>Wait times for appointments at Gender Identity Clinics may exceed five years, despite the target being only
+            18 weeks. <cite>Src: <a href="https://www.bbc.co.uk/news/uk-england-68588724">BBC</a>, <a
+                    href="https://www.nhs.uk/nhs-services/hospitals/guide-to-nhs-waiting-times-in-england/">NHS</a></cite>
+            <br><br>
+            You can either get a referral from your GP, or you can self-refer directly to a Gender Identity Clinic
+            (GIC). GP referrals are often faster as they can also supply your full medical history. <cite>Src: <a
+                    href="https://www.nhs.uk/conditions/gender-dysphoria/">NHS</a></cite>
+        </p>
+        <a href="https://www.nhs.uk/nhs-services/how-to-find-an-nhs-gender-identity-clinic/" class="cta">Find a GIC</a>
+        <p>The GIC covering the London area is run by the Tavistock and Portman NHS Foundation Trust. They provide a
+            self-referral form to download and fill in.
+            <br><br>
+            This clinic reportedly has over a 6-year wait time for new patients. <cite>Src: <a
+                    href="https://transactual.org.uk/medical-transition/gender-dysphoria-clinics/">TransActual</a></cite>
+        </p>
+        <a href="https://gic.nhs.uk/" class="cta">Tavistock and Portman GIC</a>
+        <a href="/assets/files/GIC-Self-Referral-Form-updated-May-2025-v2.2.docx" class="cta file">Download
+            Self-Referral Form</a>
+        <p><i>Form accessed on 2025-07-15. Please check GIC website for more recent versions before using.</i></p>
+        <p>Once you have a diagnosis from an NHS GIC, most of your gender-affirming care such as surgery or HRT will be
+            funded by the NHS.</p>
+        <h3>Private</h3>
+        <b>Expensive but quicker.</b>
+        <br>
+        <br>
+        <div class="callout">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>Information</title>
+                <path
+                    d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+            <p>In the interest of responsibility and liability, SafeT cannot recommend specific private healthcare
+                providers, nor do we endorse any particular firm.<br><br>
+                The advice below is general and you are strongly encouraged to do your own research on services that
+                suit you.
+                <br><br>
+                <a href="https://transwrites.world/uks-private-gender-clinics-guide/">Like reading this 2024 review of
+                    various providers.</a>
+            </p>
+        </div>
+        <p>Private gender identity services may not be a 1:1 substitute for NHS-provided services, but may be adequate
+            in
+            supporting an individual while on a waiting list for NHS services.
+            <br><br>
+            Many services offer assessments and diagnoses, which can by used to access further medical services as well
+            as carry out other important changes such as getting a GRC or updating your passport.
+        </p>
+    </section>
+    <section class="block">
+        <p>
+        <h2>Shared Care</h2>
+        An April 2025 guidance document issued by NHS England tells NHS GPs that they must not support prescription and
+        supply of HRT from private providers. This document further states that GPs "<i>may decline to accept
+            responsibility for prescribing, monitoring and testing if the GP is not assured that the provider offers a
+            safe service</i>". <cite>Src: <a
+                href="https://remedy.bnssg.icb.nhs.uk/media/r3hlu02z/unregulated-providers-gender-incongruence.pdf">NHS</a></cite>
+        <br><br>
+        This means that, if you are prescribed HRT by a private provider, your GP may refuse to carry out liver function
+        tests or other monitoring, which is necessary for safe HRT use.
+        <br><br>
+        However, if your GP is willing to support any private care, then your provider and your GP will need to organise
+        a shared care agreement, which is a formal agreement between the two parties to share responsibility for your
+        care. This may also mean that your prescription will be charged to you at NHS prices (currently £9.90 maximum
+        per item) rather than the private cost. <cite>Src: <a
+                href="https://www.nottsapc.nhs.uk/media/skijzbkq/shared-care-faq-for-patients.pdf">NHS</a>, <a
+                href="https://www.nhs.uk/nhs-services/prescriptions/nhs-prescription-charges/">NHS</a></cite>
+        <br><br>
+        Fortunately, Chelsea and Westminster Hospital NHS Foundation Trust operates a sexual health clinic&mdash;56 Dean
+        Street&mdash;which also offers services specific to trans and non-binary people. This includes liver function
+        tests and hormone injections (once prescribed by a UK registered medical doctor). Appointments must be booked
+        online or over the phone. <cite>Src: <a href="https://www.dean.st/trans-non-binary-2/">NHS</a></cite>
+        </p>
+        <a href="https://www.dean.st/trans-non-binary-2/" class="cta" target="_blank">56 Dean Street</a>
+    </section>
+    <section class="block">
+        <h2>Cost</h2>
+        <h3>NHS</h3>
+        <p>In short, free.<br>In long, a portion of your taxes and NI contributions if you're a British taxpayer, but
+            you'd be paying those anyway.</p>
+        <h3>Private</h3>
+        <p>The cost of an assessment to get a diagnosis can vary between providers, but tends to be around
+            £200&ndash;£500 per appointment. Some providers only need one appointment, some may need up to six.
+            <br><br>
+            Further care costs can also vary wildly between providers. They're usually broken up into two parts:
+        <ul>
+            <li>Initial Consultation/Upfront Fee
+                <ul>
+                    <li>c. £200&ndash;£500</li>
+                    <li>The one-time cost of your initial appointment.</li>
+                </ul>
+            </li>
+            <li>Recurring Subscription/Prescription Fee
+                <ul>
+                    <li>c. £40&ndash;£100</li>
+                    <li>The cost for each of your monthly/quarterly review appointments and/or the cost of issuing a
+                        prescription.</li>
+                </ul>
+            </li>
+        </ul>
+        </p>
+    </section>
+</body>
+
 </html>
