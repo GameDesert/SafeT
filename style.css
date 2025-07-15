@@ -165,3 +165,121 @@ h3, h4, h5, h6 {
   font-weight: 600;
   color: var(--blue);
 }
+
+/* #region BREADCRUMBS */
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: var(--yellow);
+
+  font-family: 'Atkinson Next', sans-serif;
+
+  margin: 0;
+}
+
+ul.breadcrumb li:first-child a {
+  font-family: 'Degheest', sans-serif;
+  color: var(--offwhite);
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: var(--offwhite);
+  content: "\1F782\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: var(--offwhite);
+  text-decoration: none;
+  border-bottom: 0px solid var(--offwhite);
+  transition: 0.35s;
+}
+
+ul.breadcrumb li a svg {
+  fill: var(--offwhite);
+  width: 20px;
+  height: 20px;
+  transform: translateY(3px);
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: var(--offwhite);
+  border-bottom: 4px solid var(--offwhite);
+}
+
+/* #endregion */
+
+/* #region ARTICLE HEADER */
+
+section.articleheader {
+  background-color: color-mix(in srgb, var(--article-head-primary) 40%, #fff 60%);
+
+  display: flex;
+  padding-left: 10dvw;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+  gap: 8px;
+
+  margin: 0;
+
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+section.articleheader svg {
+  width: 64px;
+  height: auto;
+  margin: 0;
+
+  fill: var(--article-head-primary);
+}
+
+section.articleheader h1 {
+  font-family: 'Degheest', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0;
+
+  color: var(--article-head-primary);
+}
+
+/* #endregion */
+
+svg.inline {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+span.shortcuts {
+  font-family: 'Atkinson Next', sans-serif;
+  font-size: 0.7em;
+  margin-left: 16px;
+  color: var(--blue);
+}
+
+span.shortcuts kbd {
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 2px 3px;
+  border-radius: 3px;
+}
+
+kbd.key {
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 2px 3px;
+  border-radius: 3px;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Safety | SafeT</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+    <!-- #region ESCAPE BUTTON -->
+    <a tabindex="1" id="leave" href="https://bbc.co.uk/weather" target="_self"
+        title="Click here or press the escape key on your keyboard to leave this page quickly.">
+        <p>Click<br />to leave<br />this page</p>
+        <svg version="1.1" viewBox="0 0 12.7 12.7" xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.7 0-12.7 12.7h12.7z" fill="#782121" style="paint-order: stroke fill markers" />
+        </svg>
+    </a>
+    <script>
+        document
+            .getElementById("leave")
+            .addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                document.body.innerHTML = "Loading...";
+                document.head.title = "Search";
+                // Clear cookies for the current site
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie =
+                        c.trim().split("=")[0] +
+                        "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                });
+                // Open BBC Weather in a new tab
+                window.open("https://bbc.co.uk/weather", "_blank");
+                // Change current tab to Google
+                location.replace("https://google.co.uk");
+            });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                document.body.innerHTML = "Loading...";
+                document.head.title = "Search";
+                // Clear cookies for the current site
+                document.cookie.split(";").forEach(function (c) {
+                    document.cookie =
+                        c.trim().split("=")[0] +
+                        "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                });
+                // Open BBC Weather in a new tab
+                window.open("https://bbc.co.uk/weather", "_blank");
+                // Change current tab to Google
+                location.replace("https://google.co.uk");
+            }
+        });
+    </script>
+    <!-- #endregion -->
+    <div class="safetybar">
+        <p>
+            To exit this page quickly, click the triangle in the bottom right or
+            press the <kbd>esc</kbd> key on your keyboard. Read on for important
+            information about browsing safely on shared devices.
+        </p>
+    </div>
+
+    <header>
+        <a href="/index.html">
+            <svg version="1.1" alt="SafeT Logo" class="logo" viewBox="0 0 512 215.52"
+                xmlns="http://www.w3.org/2000/svg">
+                <title>SafeT</title>
+                <g transform="translate(-132.68 -153.48)">
+                    <path
+                        d="m132.68 153.48v34.697h431.4v178.82h36.031v-178.82h44.572v-34.697h-125.18zm47.418 51.455c-16.94 0-29.078 3.0016-36.414 9.0039-7.3362 6.0023-11.004 15.807-11.004 29.412v25.811c0 10.004 2.2018 17.274 6.6035 21.809 4.4017 4.5351 12.138 6.8686 23.209 7.002l27.609 0.19922c4.1349 0 6.8693 0.73394 8.2031 2.2012 1.4672 1.4672 2.2012 4.068 2.2012 7.8027v20.408c0 3.7348-0.53251 6.5369-1.5996 8.4043-0.9337 1.8674-2.8683 3.2016-5.8027 4.002-2.8011 0.66693-7.1369 1-13.006 1-5.8689 0-10.271-0.33307-13.205-1-2.8011-0.80031-4.7356-2.1346-5.8027-4.002-0.9337-1.8674-1.4004-4.6695-1.4004-8.4043v-12.004h-27.01v14.006c0 13.605 3.6677 23.408 11.004 29.41 7.3362 6.0024 19.474 9.0039 36.414 9.0039s29.078-3.0016 36.414-9.0039c7.3362-6.0023 11.006-15.805 11.006-29.41v-37.615c0-7.2028-2.2018-12.338-6.6035-15.406-4.4017-3.0678-11.205-4.6674-20.408-4.8008l-32.213-0.20117c-3.468 0-5.8015-0.53252-7.002-1.5996-1.0671-1.0671-1.6016-3.4025-1.6016-7.0039v-18.607c0-3.7348 0.46669-6.535 1.4004-8.4023 1.0671-1.8674 3.0016-3.1358 5.8027-3.8027 2.9345-0.80031 7.3361-1.1992 13.205-1.1992 5.6022 0 9.7385 0.3989 12.406 1.1992 2.8011 0.66694 4.6679 1.9354 5.6016 3.8027 1.0671 1.8674 1.5996 4.6676 1.5996 8.4023v9.4043h27.012v-11.404c0-13.605-3.6677-23.41-11.004-29.412-7.2028-6.0023-19.075-9.0039-35.615-9.0039zm99.039 2.002-39.814 160.06h25.609l7.4024-30.213h38.416l7.4024 30.213h25.609l-39.814-160.06zm79.432 0v160.06h27.01v-67.826h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm102.64 0v160.06h82.631v-26.01h-55.621v-41.816h41.416v-26.012h-41.416v-40.215h55.621v-26.01zm-169.67 52.621 13.406 54.02h-26.811z"
+                        stroke-linejoin="bevel" stroke-width="7.291" />
+                </g>
+            </svg>
+        </a>
+    </header>
+
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li>
+            <a href="/directory"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>Directory</title>
+                    <path
+                        d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z" />
+                </svg>
+                Directory</a>
+        </li>
+        <li>
+            <a href="/directory/howto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>How-To</title>
+                    <path
+                        d="M12 21.5C10.65 20.65 8.2 20 6.5 20C4.85 20 3.15 20.3 1.75 21.05C1.65 21.1 1.6 21.1 1.5 21.1C1.25 21.1 1 20.85 1 20.6V6C1.6 5.55 2.25 5.25 3 5C4.11 4.65 5.33 4.5 6.5 4.5C8.45 4.5 10.55 4.9 12 6C13.45 4.9 15.55 4.5 17.5 4.5C18.67 4.5 19.89 4.65 21 5C21.75 5.25 22.4 5.55 23 6V20.6C23 20.85 22.75 21.1 22.5 21.1C22.4 21.1 22.35 21.1 22.25 21.05C20.85 20.3 19.15 20 17.5 20C15.8 20 13.35 20.65 12 21.5M12 8V19.5C13.35 18.65 15.8 18 17.5 18C18.7 18 19.9 18.15 21 18.5V7C19.9 6.65 18.7 6.5 17.5 6.5C15.8 6.5 13.35 7.15 12 8M13 11.5C14.11 10.82 15.6 10.5 17.5 10.5C18.41 10.5 19.26 10.59 20 10.78V9.23C19.13 9.08 18.29 9 17.5 9C15.73 9 14.23 9.28 13 9.84V11.5M17.5 11.67C15.79 11.67 14.29 11.93 13 12.46V14.15C14.11 13.5 15.6 13.16 17.5 13.16C18.54 13.16 19.38 13.24 20 13.4V11.9C19.13 11.74 18.29 11.67 17.5 11.67M20 14.57C19.13 14.41 18.29 14.33 17.5 14.33C15.67 14.33 14.17 14.6 13 15.13V16.82C14.11 16.16 15.6 15.83 17.5 15.83C18.54 15.83 19.38 15.91 20 16.07V14.57Z" />
+                </svg>
+                How-To</a>
+        </li>
+        <li><a href="#">Web Safety</a></li>
+    </ul>
+
+    <section class="articleheader">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <title>Web Safety</title>
+            <path
+                d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z" />
+        </svg>
+        <h1>Web Safety</h1>
+        <style>
+            :root {
+                --article-head-primary: #d64700;
+            }
+        </style>
+    </section>
+
+    <section class="block">
+        <h2>Traces</h2>
+        <p>When you visit a website, such as this one, there are several ways in which it will leave a trace on your
+            device. Through these, someone can later see that you have visited that website.
+            <br>
+            <br>
+            The most common traces left by websites are through:
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Cookies</title>
+                    <path
+                        d="M20.87 10.5C20.6 10 20 10 20 10H18V9C18 8 17 8 17 8H15V7C15 6 14 6 14 6H13V4C13 3 12 3 12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 11.5 20.96 11 20.87 10.5M11.32 18.96C12 18.82 12.5 18.22 12.5 17.5C12.5 16.67 11.83 16 11 16S9.5 16.67 9.5 17.5C9.5 18 9.76 18.47 10.16 18.74C7.54 18.04 5.5 15.81 5.09 13.12C5 12.61 5 12.11 5 11.62C5.07 12.39 5.71 13 6.5 13C7.33 13 8 12.33 8 11.5S7.33 10 6.5 10C5.82 10 5.25 10.46 5.07 11.08C5.47 8 7.91 5.5 11 5.07V6.5C11 7.33 11.67 8 12.5 8H13V8.5C13 9.33 13.67 10 14.5 10H16V10.5C16 11.33 16.67 12 17.5 12H19C19 16.08 15.5 19.36 11.32 18.96M9.5 9C8.67 9 8 8.33 8 7.5S8.67 6 9.5 6 11 6.67 11 7.5 10.33 9 9.5 9M13 12.5C13 13.33 12.33 14 11.5 14S10 13.33 10 12.5 10.67 11 11.5 11 13 11.67 13 12.5M18 14.5C18 15.33 17.33 16 16.5 16S15 15.33 15 14.5 15.67 13 16.5 13 18 13.67 18 14.5Z" />
+                </svg> <b>Cookies</b>
+                <br>
+                When you visit a majority of websites on the internet, they will store a small piece of information on
+                your device called a cookie. This can be used by other people who use your device to see if you have
+                visited a website before.<br><br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Browsing History</title>
+                    <path
+                        d="M13.5,8H12V13L16.28,15.54L17,14.33L13.5,12.25V8M13,3A9,9 0 0,0 4,12H1L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3" />
+                </svg> <b>Browsing History</b>
+                <br>
+                Every time you visit a website, your browser will record this in its browsing history. Somebody could
+                look at this list and see all the websites you have visited.<br><br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Downloads</title>
+                    <path
+                        d="M14,2H6C4.89,2 4,2.89 4,4V20C4,21.11 4.89,22 6,22H18C19.11,22 20,21.11 20,20V8L14,2M12,19L8,15H10.5V12H13.5V15H16L12,19M13,9V3.5L18.5,9H13Z" />
+                </svg> <b>Downloads</b>
+                <br>
+                When you download a file from a website, it will&mdash;naturally&mdash;remain on your device until you
+                delete it.<br><br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Malware</title>
+                    <path
+                        d="M20,8H17.19C16.74,7.2 16.12,6.5 15.37,6L17,4.41L15.59,3L13.42,5.17C12.96,5.06 12.5,5 12,5C11.5,5 11.05,5.06 10.59,5.17L8.41,3L7,4.41L8.62,6C7.87,6.5 7.26,7.21 6.81,8H4V10H6.09C6.03,10.33 6,10.66 6,11V12H4V14H6V15C6,15.34 6.03,15.67 6.09,16H4V18H6.81C8.47,20.87 12.14,21.84 15,20.18C15.91,19.66 16.67,18.9 17.19,18H20V16H17.91C17.97,15.67 18,15.34 18,15V14H20V12H18V11C18,10.66 17.97,10.33 17.91,10H20V8M16,15A4,4 0 0,1 12,19A4,4 0 0,1 8,15V11A4,4 0 0,1 12,7A4,4 0 0,1 16,11V15M14,10V12H10V10H14M10,14H14V16H10V14Z" />
+                </svg> <b>Spyware and Monitoring Software</b>
+                <br>
+                There exist special computer programmes that keep a log of everything a user does on a device. These can
+                be very hard to circumvent, and we recommend using a different trusted device if you suspect yours has
+                this type of software on it.<br><br>
+            </li>
+        </ul>
+        </p>
+    </section>
+    <section class="block">
+        <h2>Covering Your Tracks</h2>
+        <p>If you are using a shared device and/or are vulnerable or in a dangerous situation, it may be necessary for
+            you to hide the fact that you have visited this website.
+        </p>
+        <h3>Quick Exit</h3>
+        <p>If you need to exit this website quickly, you can click the triangle in the bottom right corner of the screen
+            (<span style="color: #782121;">&#x25E2;</span>) or press the <kbd class="key">esc</kbd> key on your keyboard (usually
+            located in the top left). This will take you to a safe, innocuous page and clear any cookies that this
+            website has saved. <b>However</b>, this page is unable to clear your browsing history for you, so you will
+            need to do this yourself.</p>
+        </p>
+        <h3>Private Browsing</h3>
+        <p>The best method to cover your tracks is to use private browsing:
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Google Chrome</title>
+                    <path
+                        d="M12,20L15.46,14H15.45C15.79,13.4 16,12.73 16,12C16,10.8 15.46,9.73 14.62,9H19.41C19.79,9.93 20,10.94 20,12A8,8 0 0,1 12,20M4,12C4,10.54 4.39,9.18 5.07,8L8.54,14H8.55C9.24,15.19 10.5,16 12,16C12.45,16 12.88,15.91 13.29,15.77L10.89,19.91C7,19.37 4,16.04 4,12M15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12M12,4C14.96,4 17.54,5.61 18.92,8H12C10.06,8 8.45,9.38 8.08,11.21L5.7,7.08C7.16,5.21 9.44,4 12,4M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                </svg> "Incognito" on Google Chrome
+                <br>
+                <span class="shortcuts"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> or <kbd>&#8984;</kbd> +
+                    <kbd>Shift</kbd> + <kbd>N</kbd></span>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Safari</title>
+                    <path
+                        d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.09 4.8,16 6.11,17.41L9.88,9.88L17.41,6.11C16,4.8 14.09,4 12,4M12,20A8,8 0 0,0 20,12C20,9.91 19.2,8 17.89,6.59L14.12,14.12L6.59,17.89C8,19.2 9.91,20 12,20M12,12L11.23,11.23L9.7,14.3L12.77,12.77L12,12M12,17.5H13V19H12V17.5M15.88,15.89L16.59,15.18L17.65,16.24L16.94,16.95L15.88,15.89M17.5,12V11H19V12H17.5M12,6.5H11V5H12V6.5M8.12,8.11L7.41,8.82L6.35,7.76L7.06,7.05L8.12,8.11M6.5,12V13H5V12H6.5Z" />
+                </svg> "Private Window" on Safari<br>
+                <span class="shortcuts"><kbd>&#8984;</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd></span>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Microsoft Edge</title>
+                    <path
+                        d="M10.86 15.37C10.17 14.6 9.7 13.68 9.55 12.65C9.25 13.11 9 13.61 8.82 14.15C7.9 16.9 9.5 20.33 12.22 21.33C14.56 22.11 17.19 20.72 18.92 19.2C19.18 18.85 21.23 17.04 20.21 16.84C17.19 18.39 13.19 17.95 10.86 15.37M11.46 9.56C12.5 9.55 11.5 9.13 11.07 8.81C10.03 8.24 8.81 7.96 7.63 7.96C3.78 8 .995 10.41 2.3 14.4C3.24 18.28 6.61 21.4 10.59 21.9C8.54 20.61 7.3 18.19 7.3 15.78C7.38 13.25 8.94 10.28 11.46 9.56M2.78 8.24C5.82 6 10.66 6.18 13.28 9C14.3 10.11 15 12 14.07 13.37C12.33 15.25 17.15 15.5 18.18 15.22C21.92 14.5 22.91 10.15 21.13 7.15C19.43 3.75 15.66 1.97 11.96 2C7.9 1.93 4.25 4.5 2.78 8.24Z" />
+                </svg> "InPrivate" on Edge and Internet Explorer<br>
+                <span class="shortcuts"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> or <kbd>&#8984;</kbd> +
+                    <kbd>Shift</kbd> + <kbd>N</kbd></span>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Firefox</title>
+                    <path
+                        d="M9.27 7.94C9.27 7.94 9.27 7.94 9.27 7.94M6.85 6.74C6.86 6.74 6.86 6.74 6.85 6.74M21.28 8.6C20.85 7.55 19.96 6.42 19.27 6.06C19.83 7.17 20.16 8.28 20.29 9.1L20.29 9.12C19.16 6.3 17.24 5.16 15.67 2.68C15.59 2.56 15.5 2.43 15.43 2.3C15.39 2.23 15.36 2.16 15.32 2.09C15.26 1.96 15.2 1.83 15.17 1.69C15.17 1.68 15.16 1.67 15.15 1.67H15.13L15.12 1.67L15.12 1.67L15.12 1.67C12.9 2.97 11.97 5.26 11.74 6.71C11.05 6.75 10.37 6.92 9.75 7.22C9.63 7.27 9.58 7.41 9.62 7.53C9.67 7.67 9.83 7.74 9.96 7.68C10.5 7.42 11.1 7.27 11.7 7.23L11.75 7.23C11.83 7.22 11.92 7.22 12 7.22C12.5 7.21 12.97 7.28 13.44 7.42L13.5 7.44C13.6 7.46 13.67 7.5 13.75 7.5C13.8 7.54 13.86 7.56 13.91 7.58L14.05 7.64C14.12 7.67 14.19 7.7 14.25 7.73C14.28 7.75 14.31 7.76 14.34 7.78C14.41 7.82 14.5 7.85 14.54 7.89C14.58 7.91 14.62 7.94 14.66 7.96C15.39 8.41 16 9.03 16.41 9.77C15.88 9.4 14.92 9.03 14 9.19C17.6 11 16.63 17.19 11.64 16.95C11.2 16.94 10.76 16.85 10.34 16.7C10.24 16.67 10.14 16.63 10.05 16.58C10 16.56 9.93 16.53 9.88 16.5C8.65 15.87 7.64 14.68 7.5 13.23C7.5 13.23 8 11.5 10.83 11.5C11.14 11.5 12 10.64 12.03 10.4C12.03 10.31 10.29 9.62 9.61 8.95C9.24 8.59 9.07 8.42 8.92 8.29C8.84 8.22 8.75 8.16 8.66 8.1C8.43 7.3 8.42 6.45 8.63 5.65C7.6 6.12 6.8 6.86 6.22 7.5H6.22C5.82 7 5.85 5.35 5.87 5C5.86 5 5.57 5.16 5.54 5.18C5.19 5.43 4.86 5.71 4.56 6C4.21 6.37 3.9 6.74 3.62 7.14C3 8.05 2.5 9.09 2.28 10.18C2.28 10.19 2.18 10.59 2.11 11.1L2.08 11.33C2.06 11.5 2.04 11.65 2 11.91L2 11.94L2 12.27L2 12.32C2 17.85 6.5 22.33 12 22.33C16.97 22.33 21.08 18.74 21.88 14C21.9 13.89 21.91 13.76 21.93 13.63C22.13 11.91 21.91 10.11 21.28 8.6Z" />
+                </svg> "Private Browsing" on Mozilla Firefox<br>
+                <span class="shortcuts"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or <kbd>&#8984;</kbd> +
+                    <kbd>Shift</kbd> + <kbd>P</kbd></span>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Opera</title>
+                    <path
+                        d="M9.04,17.07C8.04,15.9 7.4,14.16 7.35,12.21V11.79C7.4,9.84 8.04,8.1 9.04,6.93C9.86,5.95 10.93,5.37 12.1,5.37C14.72,5.37 16.84,8.34 16.84,12C16.84,15.66 14.72,18.63 12.1,18.63C10.93,18.63 10.33,18.5 9.04,17.07M12.03,3H12A9,9 0 0,0 3,12C3,16.83 6.8,20.77 11.57,21H12C14.3,21 16.4,20.13 18,18.71C19.84,17.06 21,14.67 21,12C21,9.33 19.84,6.94 18,5.29C16.41,3.87 14.32,3 12.03,3Z" />
+                </svg> "Private Browsing" on Opera<br>
+                <span class="shortcuts"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> or <kbd>&#8984;</kbd> +
+                    <kbd>Shift</kbd> + <kbd>N</kbd></span>
+                <br>
+                <br>
+            </li>
+        </ul>
+        This will prevent websites from storing cookies or remaining in your browsing history. However, device
+        administrators will still be able to see what you search and visit.
+        </p>
+
+        <h3>Clearing Cookies and History</h3>
+        <p>If you visit a site and it leaves cookies or a trace in your browsing history, you can easily remove these.
+            Note, however, that a recently cleared browsing history may cause some people to be suspicious, it is
+            therefore recommended that you only clear traces from the specific website you don't want found.
+            <br>
+            <br>
+            Here's how to clear your cookies and browsing history in the most popular browsers:
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Google Chrome</title>
+                    <path
+                        d="M12,20L15.46,14H15.45C15.79,13.4 16,12.73 16,12C16,10.8 15.46,9.73 14.62,9H19.41C19.79,9.93 20,10.94 20,12A8,8 0 0,1 12,20M4,12C4,10.54 4.39,9.18 5.07,8L8.54,14H8.55C9.24,15.19 10.5,16 12,16C12.45,16 12.88,15.91 13.29,15.77L10.89,19.91C7,19.37 4,16.04 4,12M15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12M12,4C14.96,4 17.54,5.61 18.92,8H12C10.06,8 8.45,9.38 8.08,11.21L5.7,7.08C7.16,5.21 9.44,4 12,4M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                </svg> <a href="https://support.google.com/chrome/answer/95589" target="_blank">Google Chrome</a>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Safari</title>
+                    <path
+                        d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12C4,14.09 4.8,16 6.11,17.41L9.88,9.88L17.41,6.11C16,4.8 14.09,4 12,4M12,20A8,8 0 0,0 20,12C20,9.91 19.2,8 17.89,6.59L14.12,14.12L6.59,17.89C8,19.2 9.91,20 12,20M12,12L11.23,11.23L9.7,14.3L12.77,12.77L12,12M12,17.5H13V19H12V17.5M15.88,15.89L16.59,15.18L17.65,16.24L16.94,16.95L15.88,15.89M17.5,12V11H19V12H17.5M12,6.5H11V5H12V6.5M8.12,8.11L7.41,8.82L6.35,7.76L7.06,7.05L8.12,8.11M6.5,12V13H5V12H6.5Z" />
+                </svg> <a href="https://support.apple.com/en-gb/guide/safari/sfri47acf5d6/mac"
+                    target="_blank">Safari</a>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Microsoft Edge</title>
+                    <path
+                        d="M10.86 15.37C10.17 14.6 9.7 13.68 9.55 12.65C9.25 13.11 9 13.61 8.82 14.15C7.9 16.9 9.5 20.33 12.22 21.33C14.56 22.11 17.19 20.72 18.92 19.2C19.18 18.85 21.23 17.04 20.21 16.84C17.19 18.39 13.19 17.95 10.86 15.37M11.46 9.56C12.5 9.55 11.5 9.13 11.07 8.81C10.03 8.24 8.81 7.96 7.63 7.96C3.78 8 .995 10.41 2.3 14.4C3.24 18.28 6.61 21.4 10.59 21.9C8.54 20.61 7.3 18.19 7.3 15.78C7.38 13.25 8.94 10.28 11.46 9.56M2.78 8.24C5.82 6 10.66 6.18 13.28 9C14.3 10.11 15 12 14.07 13.37C12.33 15.25 17.15 15.5 18.18 15.22C21.92 14.5 22.91 10.15 21.13 7.15C19.43 3.75 15.66 1.97 11.96 2C7.9 1.93 4.25 4.5 2.78 8.24Z" />
+                </svg> <a
+                    href="https://support.microsoft.com/en-us/microsoft-edge/view-and-delete-browser-history-in-microsoft-edge-00cf7943-a9e1-975a-a33d-ac10ce454ca4"
+                    target="_blank">Edge</a>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Firefox</title>
+                    <path
+                        d="M9.27 7.94C9.27 7.94 9.27 7.94 9.27 7.94M6.85 6.74C6.86 6.74 6.86 6.74 6.85 6.74M21.28 8.6C20.85 7.55 19.96 6.42 19.27 6.06C19.83 7.17 20.16 8.28 20.29 9.1L20.29 9.12C19.16 6.3 17.24 5.16 15.67 2.68C15.59 2.56 15.5 2.43 15.43 2.3C15.39 2.23 15.36 2.16 15.32 2.09C15.26 1.96 15.2 1.83 15.17 1.69C15.17 1.68 15.16 1.67 15.15 1.67H15.13L15.12 1.67L15.12 1.67L15.12 1.67C12.9 2.97 11.97 5.26 11.74 6.71C11.05 6.75 10.37 6.92 9.75 7.22C9.63 7.27 9.58 7.41 9.62 7.53C9.67 7.67 9.83 7.74 9.96 7.68C10.5 7.42 11.1 7.27 11.7 7.23L11.75 7.23C11.83 7.22 11.92 7.22 12 7.22C12.5 7.21 12.97 7.28 13.44 7.42L13.5 7.44C13.6 7.46 13.67 7.5 13.75 7.5C13.8 7.54 13.86 7.56 13.91 7.58L14.05 7.64C14.12 7.67 14.19 7.7 14.25 7.73C14.28 7.75 14.31 7.76 14.34 7.78C14.41 7.82 14.5 7.85 14.54 7.89C14.58 7.91 14.62 7.94 14.66 7.96C15.39 8.41 16 9.03 16.41 9.77C15.88 9.4 14.92 9.03 14 9.19C17.6 11 16.63 17.19 11.64 16.95C11.2 16.94 10.76 16.85 10.34 16.7C10.24 16.67 10.14 16.63 10.05 16.58C10 16.56 9.93 16.53 9.88 16.5C8.65 15.87 7.64 14.68 7.5 13.23C7.5 13.23 8 11.5 10.83 11.5C11.14 11.5 12 10.64 12.03 10.4C12.03 10.31 10.29 9.62 9.61 8.95C9.24 8.59 9.07 8.42 8.92 8.29C8.84 8.22 8.75 8.16 8.66 8.1C8.43 7.3 8.42 6.45 8.63 5.65C7.6 6.12 6.8 6.86 6.22 7.5H6.22C5.82 7 5.85 5.35 5.87 5C5.86 5 5.57 5.16 5.54 5.18C5.19 5.43 4.86 5.71 4.56 6C4.21 6.37 3.9 6.74 3.62 7.14C3 8.05 2.5 9.09 2.28 10.18C2.28 10.19 2.18 10.59 2.11 11.1L2.08 11.33C2.06 11.5 2.04 11.65 2 11.91L2 11.94L2 12.27L2 12.32C2 17.85 6.5 22.33 12 22.33C16.97 22.33 21.08 18.74 21.88 14C21.9 13.89 21.91 13.76 21.93 13.63C22.13 11.91 21.91 10.11 21.28 8.6Z" />
+                </svg> <a href="https://support.mozilla.org/en-US/kb/delete-browsing-search-download-history-firefox"
+                    target="_blank">Mozilla Firefox</a>
+                <br>
+                <br>
+            </li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="inline">
+                    <title>Opera</title>
+                    <path
+                        d="M9.04,17.07C8.04,15.9 7.4,14.16 7.35,12.21V11.79C7.4,9.84 8.04,8.1 9.04,6.93C9.86,5.95 10.93,5.37 12.1,5.37C14.72,5.37 16.84,8.34 16.84,12C16.84,15.66 14.72,18.63 12.1,18.63C10.93,18.63 10.33,18.5 9.04,17.07M12.03,3H12A9,9 0 0,0 3,12C3,16.83 6.8,20.77 11.57,21H12C14.3,21 16.4,20.13 18,18.71C19.84,17.06 21,14.67 21,12C21,9.33 19.84,6.94 18,5.29C16.41,3.87 14.32,3 12.03,3Z" />
+                </svg> <a href="https://blogs.opera.com/tips-and-tricks/2023/04/clean-browser-and-remove-trackers/"
+                    target="_blank">Opera</a>
+                <br>
+                <br>
+            </li>
+        </ul>
+        </p>
+        <h3>Alternative Devices</h3>
+        <p>If your devices at home are not safe to use as someone else has access to them, consider visiting a library to browse the web or ask a trusted friend to borrow their device.</p>
+    </section>
+</body>
+
+</html>
