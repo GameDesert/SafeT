@@ -24,6 +24,11 @@
       height: 14px;
       transform: translateY(2px);
     }
+
+    h2 {
+      font-family: 'Atkinson-Next';
+
+    }
   </style>
 </head>
 
@@ -103,7 +108,14 @@
           <path
             d="M11,12H3.5L6,9.5L3.5,7H11V3L12,2L13,3V7H18L20.5,9.5L18,12H13V20A2,2 0 0,1 15,22H9A2,2 0 0,1 11,20V12Z" />
         </svg> Directory</a></li>
-    <li><a href="#">Bathrooms</a></li>
+    <li><a href="/directory/bathrooms.html">
+        <svg>
+          <title>Bathrooms</title>
+          <path
+            d="M7 14C5.9 14 5 13.1 5 12S5.9 10 7 10 9 10.9 9 12 8.1 14 7 14M12.6 10C11.8 7.7 9.6 6 7 6C3.7 6 1 8.7 1 12S3.7 18 7 18C9.6 18 11.8 16.3 12.6 14H16V18H20V14H23V10H12.6Z" />
+        </svg>
+        Bathrooms</a></li>
+    <li><a href="#">High Contrast</a></li>
   </ul>
 
   <svg style="display: none;">
@@ -181,14 +193,14 @@
         --article-head-primary: #ff8080;
       }
     </style>
-    <h1>Bathrooms</h1>
+    <h1>Bathrooms<br>(High Contrast)</h1>
   </section>
 
   <div id="map"></div>
 
   <script>
     var currentIcon = L.icon({
-      iconUrl: '/assets/map-current-location.png',
+      iconUrl: '/assets/map-current-location-hc.png',
 
       iconSize: [30, 30], // size of the icon
       iconAnchor: [15, 15], // point of the icon which will correspond to marker's location
@@ -196,7 +208,7 @@
     });
 
     var facilityIcon = L.icon({
-      iconUrl: '/assets/toilet-marker.png',
+      iconUrl: '/assets/toilet-marker-hc.png',
 
       iconSize: [48, 48], // size of the icon
       iconAnchor: [24, 24], // point of the icon which will correspond to marker's location
@@ -204,7 +216,7 @@
     });
 
     var radarIcon = L.icon({
-      iconUrl: '/assets/radar-toilet-marker.png',
+      iconUrl: '/assets/radar-toilet-marker-hc.png',
 
       iconSize: [48, 48], // size of the icon
       iconAnchor: [24, 24], // point of the icon which will correspond to marker's location
@@ -213,7 +225,7 @@
 
     var map = L.map('map').setView([51.505, -0.09], 13);
 
-    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: 'Map tiles by Carto, under CC BY 3.0. Data by <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, under ODbL'
     }).addTo(map);
@@ -288,55 +300,6 @@
       If you press <kbd>allow</kbd>, your present approximate location will be indicated with the <img
         src="/assets/map-current-location.png" alt="Blue Circle Marker"
         style="display: inline; width: 20px; height: auto; transform: translateY(4px);"> symbol.</p>
-      <a href="/directory/bathrooms-highcontrast.html" class="cta">High-contrast version</a>
-      </section>
-  <section class="block">
-    <h2>Types</h2>
-    <p>This map displays locations of bathrooms known to be accessible and inclusive for all gender identities.
-      <br>
-      <br>
-      Facilities here are divided into three categories:
-    <ul>
-      <li><svg class='mapicon'>
-          <use href='#icon-accessible' />
-        </svg> <b>Accessible</b>
-        <br>
-        <span style="font-size: 13px;">A fully enclosed bathroom with signs indicating it is intended for use by people
-          with disabilities.</span>
-      </li>
-      <li><svg class='mapicon'>
-          <use href='#icon-single' />
-        </svg> <b>Single Occupancy</b>
-        <br>
-        <span style="font-size: 13px;">A fully enclosed bathroom that is intended for use by anybody.</span>
-      </li>
-      <li><svg class='mapicon'>
-          <use href='#icon-asterisk' />
-        </svg> <b>Gender Neutral</b>
-        <br>
-        <span style="font-size: 13px;">Enclosed toilet cubicles with a shared any-gender handwashing area.</span>
-      </li>
-    </ul>
-    </p>
-  </section>
-  <svg style="width: 100dvw; height: 33dvw; border-top: solid 0.6dvw #2274a5; border-bottom: solid 0.6dvw #2274a5;"
-    version="1.1" viewBox="0 0 812.8 270.93" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="m226.61 0v270.93h4.2323v-270.93h-4.2323zm230.99 0v270.93h4.2323v-270.93h-4.2323zm-408.79 59.139v211.79h5.2968v-206.5h118.25v206.5h5.2968v-211.79h-128.84zm230.99 0v211.79h5.2968v-206.5h118.25v206.5h5.2968v-211.79h-128.84zm230.99 0v211.79h5.2968v-206.5h90.728v206.5h5.2974v-211.79h-101.32zm109.78 0v211.79h5.2968v-206.5h90.729v206.5h5.2968v-211.79h-101.32zm-512.74 32.947c-2.6938 0-4.8534 2.1839-4.8534 4.8534v0.2434l2.6696 26.453h13.105l7.7659 10.363 6.674-3.3249-2.1844-4.3444-3.0334 1.5048-6.7954-9.0522h-11.139l-0.48575-4.854h7.9845v-4.8534h-8.494l-0.72813-7.2807c2.4511-0.29168 4.3687-2.33 4.3687-4.854 0-2.6695-2.1602-4.8534-4.854-4.8534zm243.23 0.24546c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4972-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm217.23 0c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4971-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm109.78 0c-2.5319 0-4.562 2.0524-4.562 4.5615v18.248h-22.81c0 7.0483 4.562 13.686 13.686 17.108v5.702h18.248v-5.702c5.4971-3.7181 9.124-9.9913 9.124-17.108v-18.248a4.562 4.562 0 0 0-4.562-4.5615h-9.124zm-327.01 4.5615h9.124v18.248h-9.124v-18.248zm217.23 0h9.124v18.248h-9.124v-18.248zm109.78 0h9.124v18.248h-9.124v-18.248zm-324.73 2.2815v6.843h4.562v-6.843h-4.562zm217.23 0v6.843h4.562v-6.843h-4.562zm109.78 0v6.843h4.562v-6.843h-4.562zm-578.47 11.234c-5.0721 2.3055-8.615 7.3288-8.615 13.226 0 8.0328 6.528 14.561 14.561 14.561 5.606 0 10.484-3.2035 12.911-7.8631l-3.2034-4.2711h-0.33951c-1.0921 4.1742-4.854 7.2802-9.3679 7.2802-5.3633 0-9.7074-4.3441-9.7074-9.7074 0-3.3248 1.7234-6.2124 4.2716-7.9597l-0.51005-5.2664zm227.03 9.2945h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm217.23 0h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm109.78 0h30.611c-1.3002 4.3566-4.4252 7.9832-8.4625 9.8764v3.8096h-9.124v-3.8096c-4.562-0.75262-11.724-5.5198-13.025-9.8764zm118.95 28.731c-1.2396 0.03055-2.3182 1.0414-2.3182 2.3895 0 1.021 0.66406 1.9405 1.634 2.2464l13.681 4.5687v5.1051h12.763v-5.1051l-24.887-9.0615c-0.29194-0.1053-0.58676-0.1502-0.87282-0.14315zm12.997 16.863v2.5523h-17.357c-3.0631 0-5.6157 2.2973-5.6157 5.1051l22.973 2.3229v18.098h-38.392v77.559h63.318v-77.559h-12.163v-28.078h-12.763zm-22.973 10.21v5.1051h7.6574v-4.3904l-7.6574-0.71468zm-601.1 9.11a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.986v4.2323h21.625a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3786-4.3785 4.3789 4.3789 0 0 0-4.3786-4.3791zm230.99 0a4.3789 4.3789 0 0 0-0.00724 5.1e-4h-25.985v4.2323h21.624a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3786 4.3785 4.3789 4.3789 0 0 0 4.3791-4.3785 4.3789 4.3789 0 0 0-4.3791-4.3791zm203.47 0a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.984v4.2323h21.623a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3786-4.3785 4.3789 4.3789 0 0 0-4.3786-4.3791zm109.78 0a4.3789 4.3789 0 0 0-0.00723 5.1e-4h-25.984v4.2323h21.623a4.3789 4.3789 0 0 0-0.01034 0.14625 4.3789 4.3789 0 0 0 4.3791 4.3785 4.3789 4.3789 0 0 0 4.3791-4.3785 4.3789 4.3789 0 0 0-4.3791-4.3791z"
-      color="#000000" fill="#2274a5" />
-  </svg>
-  <section class="block">
-    <h2>Locks</h2>
-    <p>Access to some bathrooms may be limited, either to paying customers or to those holding a Radar key.</p>
-    <a href="/directory/howto/radarkey" class="cta">Read our guide on Radar keys</a>
-    <p>Bathrooms accessible without a Radar key are indicated by the <img src="/assets/toilet-marker.png"
-        alt="Orange Toilet Marker" style="display: inline; width: 24px; height: auto; transform: translateY(8px);">
-      marker, whilst those that require the key are indicated by the <img src="/assets/radar-toilet-marker.png"
-        alt="Blue Toilet Marker" style="display: inline; width: 24px; height: auto; transform: translateY(8px);">
-      marker.</p>
-    <p>Some bathrooms may require a code to unlock, the map notes for a bathroom will indicate what the code was at the
-      time of the last update, but this may be subject to change based on the establishment.<br><br>Occasionally, some
-      bathrooms require an employee or member of staff to unlock them.</p>
   </section>
 </body>
 

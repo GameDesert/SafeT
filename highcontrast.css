@@ -73,3 +73,66 @@ div.signpost > nav > ul > li > a > div.icon {
     background-color: #313131 !important;
 }
 /* #endregion */
+/* #region HOW-TO INDEX */
+nav.page-howto > ul > li > a {
+    background-color: #000 !important;
+    border-left: dotted 2px #ffd900 !important;
+    border-right: dotted 2px #ffd900 !important;
+    border-top: dotted 2px #ffd900 !important;
+}
+
+nav.page-howto {
+    padding-bottom: 32px;
+}
+
+/* nav.page-howto > ul > li > a:before {
+    content: "CLICK";
+    font-family: 'Atkinson Next', Courier, monospace;
+    font-size: 1rem;
+    color: #ffd900 ;
+} */
+
+nav.page-howto > ul > li > a > span {
+    color: #ffd900 !important;
+}
+/* #endregion */
+
+/* #region CALLOUTS */
+div.callout {
+    background-color: #000 !important;
+    color: #ffd900 !important;
+    border: 3px solid #ffd900 !important;
+}
+
+div.callout p {
+    color: #ffd900 !important;
+    font-family: 'Atkinson Next', sans-serif !important;
+    font-size: 1.1rem !important;    
+}
+
+div.callout.red {
+    background-color: #000 !important;
+    color: #ffd900 !important;
+    border: 3px solid #ff3232 !important;
+}
+
+div.callout.red svg {
+    fill: #ff3232 !important;
+}
+/* #endregion */
+
+/* #region ARTICLE ELEMENTS */
+a.cta {
+    background-color: #000 !important;
+    border-top: 2px dotted #ffd900 !important;
+    border-left: 2px dotted #ffd900 !important;
+    border-right: 2px dotted #ffd900 !important;
+}
+
+cite {
+    background-color: #000 !important;
+    border: 2px solid #ffd900 !important;
+    color: #ffd900 !important;
+    margin: 6px;
+}
+/* #endregion */
