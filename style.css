@@ -3,6 +3,7 @@
 @media (prefers-contrast: more) {
   @import url("highcontrast.css");
 }
+
 :root {
   --yellow: #ffc15e;
   --red: #b33951;
@@ -358,3 +359,76 @@ div.callout.red svg {
   fill: var(--red);
 }
 /* #endregion */
+
+footer {
+  background-color: var(--blue);
+  width: 100%;
+  min-height: 20dvh;
+}
+
+footer > div.updatetime {
+  background-color: color-mix(in srgb, var(--blue) 80%, #000 20%);
+  color: #fff;
+  padding: 4px;
+  font-family: 'Atkinson Next', sans-serif;
+  font-size: 0.8rem;
+}
+
+footer > div.content {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  flex-wrap: wrap;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+footer > div.content > div.a11y {
+  background-color: #ffd900;
+  width: 160px;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  gap: 4px;
+
+  padding: 8px;
+
+  border: 3px dotted var(--blue);
+  border-left: none;
+}
+
+footer > div.content > div.a11y > h2 {
+  font-family: 'Degheest', sans-serif !important;
+  font-weight: 100 !important;
+  font-size: 1.2rem;
+  color: #000 !important;
+}
+
+footer > div.content > div.a11y > button {
+  background-color: #ffd900;
+  border: 2px solid black !important;
+  cursor: pointer;
+  font-family: 'Atkinson Next', sans-serif;
+  font-weight: 400;
+  margin: 1px !important;
+
+  width: 150px;
+}
+
+footer > div.content > div.a11y > button:hover {
+  font-weight: 700;
+  border-width: 3px !important;
+  margin: 0 !important;
+}
+
+footer > div.content > div.a11y > label {
+  font-family: 'Atkinson Next', sans-serif;
+  font-size: 0.7rem;
+  width: 150px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
