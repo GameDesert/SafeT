@@ -1,0 +1,92 @@
+body {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-size: 14pt;
+}
+
+section.block {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+section.articleheader {
+    background-color: #fff !important;
+    color: #000 !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    align-content: center !important;
+    justify-content: flex-start !important;
+
+    padding: 0 !important;
+    padding-left: 10mm !important;
+}
+
+section.articleheader > h1 {
+    color: #000 !important;
+    font-size: 22pt !important;
+}
+
+section.articleheader > svg {
+    fill: #000 !important;
+    width: 10mm !important;
+}
+
+h3, h4, h5, h6 {
+    color: #000 !important;
+    margin: 5mm !important;
+
+    width: fit-content !important;
+
+    font-weight: 100 !important;
+}
+
+h2 {
+    color: #000 !important;
+    font-size: 20pt !important;
+    margin-left: 0mm !important;
+}
+
+h3 {margin-left: 5mm !important; font-size: 18pt !important;}
+h4 {margin-left: 6mm !important; font-size: 16pt !important;}
+h5 {margin-left: 7mm !important; font-size: 14pt !important;}
+h6 {margin-left: 8mm !important; font-size: 12pt !important;}
+
+ul.breadcrumb {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-bottom: 2px #000 solid !important;
+    margin-bottom: 10mm !important;
+}
+
+ul.breadcrumb li a {
+    color: #000 !important;
+
+    font-size: 12pt !important;
+}
+
+ul.breadcrumb li a svg {
+    display: none !important;
+}
+
+ul.breadcrumb li+li:before {
+  padding: 1px !important;
+  color: #000 !important;
+  content: "/\00a0" !important;
+}
+
+section.block p {
+    font-size: 12pt !important;
+}
+
+header svg {
+    fill: #000 !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+kbd {
+    border-color: #000 !important;
+    color: #000 !important;
+}

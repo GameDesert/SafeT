@@ -1,8 +1,10 @@
-@import url("fonts.css");
+@import url("/fonts.css");
 
 @media (prefers-contrast: more) {
-  @import url("highcontrast.css");
+  @import url("/highcontrast.css");
 }
+
+@import url("/simple.css");
 
 :root {
   --yellow: #ffc15e;

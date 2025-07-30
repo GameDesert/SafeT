@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>London Trans + GNC Directory | SafeT</title>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/simple.css" media="print">
 </head>
 
 <body>
@@ -107,6 +108,10 @@
   </section>
   <section class="block">
     <h2>Lorem ipsum</h2>
+    <h3>Aitch Three</h3>
+    <h4>Aitch Four</h4>
+    <h5>Aitch Five</h5>
+    <h6>Aitch Six</h6>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, reiciendis, temporibus voluptatibus natus et
       alias in laboriosam fuga deserunt quibusdam iusto aliquid suscipit. Unde exercitationem quasi quos recusandae,
       culpa illo.</p>
@@ -119,7 +124,7 @@
       <div class="a11y">
         <h2>Accessibility</h2>
         <button title="Default Mode" id="a11y_default_button"
-          onclick="document.getElementById('highcontraststyle').remove()">
+          onclick="document.getElementById('highcontraststyle').remove(); document.getElementById('simplestyle').remove()">
           Default Mode
         </button>
         <label for="a11y_default_button">Reset styles to default.</label>
